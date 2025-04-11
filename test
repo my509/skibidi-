@@ -1,0 +1,30 @@
+-- Thiết lập biến
+local player = game:GetService("Players").LocalPlayer
+local workspace = game:GetService("Workspace")
+local repstorage = game:GetService("ReplicatedStorage")
+
+-- Menu
+local menu = Instance.new("ScreenGui")
+menu.Name = "NghiaMaster"
+menu.Parent = game:GetService("CoreGui")
+
+-- Frame chính
+local mainFrame = Instance.new("Frame")
+mainFrame.Name = "MainFrame"
+mainFrame.Parent = menu
+mainFrame.Position = UDim2.new(0.5, -150, 0.5, -150)
+mainFrame.Size = UDim2.new(0, 300, 0, 300)
+mainFrame.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+mainFrame.BorderColor3 = Color3.new(1, 1, 1)
+
+-- Button level max
+local levelMaxButton = Instance.new("TextButton")
+levelMaxButton.Name = "LevelMaxButton"
+levelMaxButton.Parent = mainFrame
+levelMaxButton.Position = UDim2.new(0.1, 0, 0.1, 0)
+levelMaxButton.Size = UDim2.new(0.8, 0, 0.2, 0)
+levelMaxButton.Text = "Level Max"
+levelMaxButton.BackgroundColor3 = Color3.new(0, 1, 0)
+levelMaxButton.BorderColor3 = Color3.new(0, 0, 0)
+levelMaxButton.Font = Enum.Font.SourceSansBold
+levelMaxButton.

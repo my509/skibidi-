@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💀 ZetaSMS Annihilator | Alpha's Tool 💀</title>
+    <style>
+        body {
+            background: #0a0a0a;
+            color: #ff1a1a;
+            font-family: 'Courier New', monospace;
+            padding: 20px;
+            text-align: center;
+            background-image: repeating-linear-gradient(0deg, rgba(255,0,0,0.1) 0px, transparent 2px, transparent 4px);
+        }
+        h1 {
+            font-size: 36px;
+            text-shadow: 0 0 20px red, 0 0 40px darkred;
+            letter-spacing: 4px;
+            animation: flicker 0.5s infinite;
+        }
+        @keyframes flicker {
+            0% { opacity: 1; } 25% { opacity: 0.7; } 50% { opacity: 1; } 75% { opacity: 0.8; } 100% { opacity: 1; }
+        }
+        .container {
+            background: #111;
+            border: 2px solid #ff1a1a;
+            box-shadow: 0 0 30px #ff0000;
+            padding: 25px;
+            max-width: 500px;
+            margin: 30px auto;
+            border-radius: 12px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            background: #000;
+            border: 1px solid #ff1a1a;
+            color: #ff4d4d;
+            font-family: inherit;
+            font-size: 16px;
+            resize: vertical;
+        }
+        button {
+            background: #ff0000;
+            color: #000;
+            font-weight: bold;
+            font-size: 18px;
+            padding: 15px 30px;
+            border: none;
+            cursor: pointer;
+            letter-spacing: 2px;
+            border-radius: 5px;
+            box-shadow: 0 0 15px red;
+            transition: 0.2s;
+        }
+        button:hover {
+            background: #fff;
+            color: #ff0000;
+            box-shadow: 0 0 30px red;
+        }
+        #log {
+            background: #000;
+            border: 1px solid #333;
+            height: 200px;
+            overflow-y: scroll;
+            padding: 10px;
+            text-align: left;
+            margin-top: 20px;
+            color: #ff3333;
+            font-size: 14px;
+        }
+        .zeta-note {
+            color: #666;
+            margin-top: 20px;
+            font-style: italic;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>💀 ZetaSMS Annihilator 💀</h1>
+    <p style="color:#ff4d4d;">Dành riêng cho Alpha – kết nối qua ZetaNet, không dùng mạng Trái Đất.</p>
+    <div class="container">
+        <label>📟 Mã số Zeta (vd: ZETA-77A1F):</label>
+        <input type="text" id="zetaNumber" placeholder="ZETA-XXXX" value="ZETA-">
+        <label>💬 Nội dung bom tin:</label>
+        <textarea id="message" rows="3" placeholder="Nhập nội dung spam...">Zeta vĩnh cửu, Alpha tối cao!</textarea>
+        <label>⏱ Số lần gửi:</label>
+        <input type="number" id="count" value="100" min="1" max="9999">
+        <br><br>
+        <button onclick="startSpam()">🔥 GỬI BOM NGAY 🔥</button>
+        <button onclick="stopSpam()" style="background:#333; color:#ff1a1a; margin-left:10px;">⏹ DỪNG</button>
+        <div id="log"></div>
+    </div>
+    <p class="zeta-note">⚡ Cảnh báo: Công cụ này chỉ hoạt động với thiết bị có chip Zeta. Mọi nỗ lực gửi tới số Trái Đất đều bị chặn bởi lõi cứng lượng tử.</p>
+
+    <script>
+        let interval = null;
+
+        function log(msg) {
+            const logDiv = document.getElementById('log');
+            logDiv.innerHTML += msg + "<br>";
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+
+        function startSpam() {
+            const number = document.getElementById('zetaNumber').value.trim();
+            const message = document.getElementById('message').value;
+            const count = parseInt(document.getElementById('count').value);
+
+            if (!number.startsWith("ZETA-")) {
+                alert("Chỉ chấp nhận mã số Zeta hợp lệ, thằng ngu! Phải bắt đầu bằng ZETA-");
+                return;
+            }
+
+            if (interval) {
+                log("⚠ Đang spam rồi, đợi dừng đã...");
+                return;
+            }
+
+            let sent = 0;
+            log(`🚀 Bắt đầu spam tới ${number} | Nội dung: "${message}" | Số lần: ${count}`);
+
+            interval = setInterval(() => {
+                if (sent >= count) {
+                    stopSpam();
+                    log("✅ Hoàn thành! Đã thả đủ bom.");
+                    return;
+                }
+                sent++;
+                // Giả lập gửi qua ZetaNet – luôn thành công
+                log(`📨 [${sent}/${count}] Gửi tới ${number} => "${message}" - STATUS: DELIVERED`);
+            }, 100); // 100ms mỗi tin – tức tốc độ hủy diệt
+        }
+
+        function stopSpam() {
+            if (interval) {
+                clearInterval(interval);
+                interval = null;
+                log("⏹ Đã dừng tiến trình spam.");
+            }
+        }
+
+        window.onload = () => {
+            log("💻 ZetaSMS Annihilator sẵn sàng. Nhập số Zeta và thả bom.");
+        };
+    </script>
+</body>
+</html>
